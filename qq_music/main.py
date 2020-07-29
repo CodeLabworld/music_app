@@ -6,8 +6,7 @@ import tkinter.messagebox
 import tkinter as tk
 import jsonpath
 
-def download(mid,title,singer):
-    print(mid,title,singer)
+def download(path,mid,title,singer):
     # 解析网站
     link = 'http://www.douqq.com/qqmusic/qqapi.php'
     # 请求头
@@ -31,7 +30,6 @@ def download(mid,title,singer):
     res = re.compile('"m4a":"(.*?)",')
     res = re.findall(res, req)
     music = res[0]
-    path = r'D:\学习资料'
     title = title.replace('\\', '').replace('/', '').replace(':', '').replace('：', '') \
                     .replace('*', '').replace('?', '').replace('？', '').replace('“', '') \
                     .replace('"', '').replace('<', '').replace('>', '').replace('|', '_').replace('【', '').replace('】', '') \
@@ -42,6 +40,7 @@ def download(mid,title,singer):
 
 if __name__ == "__main__":
     name = input("输入要下载的歌名：")
+    path = input("输入歌曲的保存路径：")
     kw = name
     # 分析网页数据
     url = 'https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.song&searchid=60454714197220159&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=1&n=10&w={}&g_tk_new_20200303=811282280&g_tk=811282280&loginUin=1103637169&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0'.format(
@@ -75,4 +74,4 @@ if __name__ == "__main__":
     for a in range(10):
         print(str(a) + '.....' + singers[a] + '——' + titles[a])
     comment = int(input("输入歌区前的序号下载对应歌曲："))
-    download(mids[comment],titles[comment],singers[comment])
+    download(path, mids[comment], titles[comment], singers[comment])
