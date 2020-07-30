@@ -73,5 +73,5 @@ if __name__ == "__main__":
     )
     for a in range(10):
         print(str(a) + '.....' + singers[a] + '——' + titles[a])
-    comment = int(input("输入歌区前的序号下载对应歌曲："))
-    download(path, mids[comment], titles[comment], singers[comment])
+    command = int(input("输入歌区前的序号下载对应歌曲："))
+    download(path, mids[command], titles[command], singers[command])
